@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Vida | Desarrollador de Sistemas</title>
+    <!-- Tailwind CSS desde CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fuentes Google (Inter) y FontAwesome para iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilos específicos para la impresión / PDF */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 12pt;
+            }
+            .print-shadow-none {
+                box-shadow: none !important;
+                border: 1px solid #e5e7eb !important;
+            }
+            .page-break {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
+
+    <!-- Barra de Herramientas Flotante (No Imprimible) -->
+    <div class="no-print fixed top-4 right-4 z-50 flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-2 rounded-full shadow-lg border border-slate-200 dark:border-slate-700">
+        <!-- Botón Cambiar Tema -->
+        <button id="themeToggle" class="p-2.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors" title="Cambiar tema">
+            <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+            <i class="fa-solid fa-sun hidden dark:block text-lg text-amber-400"></i>
+        </button>
+        <!-- Botón Imprimir / PDF -->
+        <button onclick="window.print()" class="flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-full font-medium text-sm transition-all shadow-sm hover:shadow">
+            <i class="fa-solid fa-print"></i>
+            <span>Imprimir / PDF</span>
+        </button>
+    </div>
+
+    <!-- Contenedor Principal del CV -->
+    <main class="max-w-5xl mx-auto my-0 sm:my-8 bg-white dark:bg-slate-800 shadow-xl rounded-none sm:rounded-2xl overflow-hidden border-0 sm:border border-slate-200 dark:border-slate-700 transition-colors duration-300 print-shadow-none">
+        
+        <!-- ENCABEZADO / CABECERA -->
+        <header class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 text-white p-8 md:p-12 relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8 relative z-10">
+                <!-- Foto de Perfil con Inciales -->
+                <div class="relative group">
+                    <div class="w-32 h-32 rounded-2xl bg-gradient-to-tr from-brand-500 to-cyan-400 flex items-center justify-center text-4xl font-bold text-white shadow-lg border-4 border-white/10 overflow-hidden">
+                        <!-- Reemplazar con <img src="..." alt="Foto"> si se tiene foto real -->
+                        <span>DS</span>
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-emerald-500 w-5 h-5 rounded-full border-2 border-slate-900" title="Disponible para trabajar"></div>
+                </div>
+
+                <!-- Información Principal -->
+                <div class="text-center md:text-left flex-1">
+                    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Juan Pérez</h1>
+                    <p class="text-brand-400 font-semibold text-lg md:text-xl mt-1">Especialista en Desarrollo de Sistemas</p>
+                    
+                    <p class="mt-3 text-slate-300 text-sm md:text-base leading-relaxed max-w-2xl">
+                        Apasionado por la creación de soluciones tecnológicas eficientes, desarrollo de software escalable y optimización de bases de datos. Enfoque orientado a resultados y mejora continua.
+                    </p>
+
+                    <!-- Datos de Contacto Rápidos -->
+                    <div class="mt-6 flex flex-wrap justify-center md:justify-start gap-4 text-xs md:text-sm text-slate-300">
+                        <a href="mailto:juan.perez@email.com" class="flex items-center gap-2 hover:text-white transition-colors">
+                            <i class="fa-solid fa-envelope text-brand-400"></i>
+                            <span>juan.perez@email.com</span>
+                        </a>
+                        <a href="tel:+51987654321" class="flex items-center gap-2 hover:text-white transition-colors">
+                            <i class="fa-solid fa-phone text-brand-400"></i>
+                            <span>+51 987 654 321</span>
+                        </a>
+                        <span class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-400"></i>
+                            <span>Lima, Perú</span>
+                        </span>
+                        <a href="https://github.com" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors">
+                            <i class="fa-brands fa-github text-brand-400"></i>
+                            <span>github.com/usuario</span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors">
+                            <i class="fa-brands fa-linkedin text-brand-400"></i>
+                            <span>linkedin.com/in/usuario</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- CUERPO DEL CV (2 COLUMNAS EN ESCRITORIO) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 md:p-10">
+            
+            <!-- COLUMNA IZQUIERDA (Habilidades, Educación, Certificaciones) -->
+            <div class="space-y-8 md:col-span-1 border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-700 pb-8 md:pb-0 md:pr-6">
+                
+                <!-- EDUCACIÓN -->
+                <section class="page-break">
+                    <div class="flex items-center gap-2 mb-4 text-brand-600 dark:text-brand-400">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-wider">Educación</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-brand-100 text-brand-800 dark:bg-brand-900/60 dark:text-brand-300">En Curso / Egresado</span>
+                            <h3 class="font-bold text-slate-900 dark:text-white mt-2">Desarrollo de Sistemas de Información</h3>
+                            <p class="text-sm text-brand-600 dark:text-brand-400 font-medium">Instituto SISE</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1"><i class="fa-regular fa-calendar mr-1"></i>2021 - Presente</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-300 mt-2">Formación técnica enfocada en ingeniería de software, arquitectura de sistemas y bases de datos.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- HABILIDADES TÉCNICAS -->
+                <section class="page-break">
+                    <div class="flex items-center gap-2 mb-4 text-brand-600 dark:text-brand-400">
+                        <i class="fa-solid fa-code text-xl"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-wider">Habilidades Técnicas</h2>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <!-- Lenguajes & Frontend -->
+                        <div>
+                            <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Frontend & Lenguajes</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg flex items-center gap-1.5">
+                                    <i class="fa-brands fa-html5 text-orange-500"></i> HTML5
+                                </span>
+                                <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg flex items-center gap-1.5">
+                                    <i class="fa-brands fa-css3-alt text-blue-500"></i> CSS3 / Tailwind
+                                </span>
+                                <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg flex items-center gap-1.5">
+                                    <i class="fa-brands fa-js text-yellow-500"></i> JavaScript
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Backend & Base de Datos -->
+                        <div>
+                            <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Backend & Bases de Datos</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg flex items-center gap-1.5">
+                                    <i class="fa-solid fa-database text-sky-600"></i> SQL / MySQL
+                                </span>
+                                <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg flex items-center gap-1.5">
+                                    <i class="fa-solid fa-server text-emerald-600"></i> SQL Server
+                                </span>
+                                <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg flex items-center gap-1.5">
+                                    <i class="fa-brands fa-php text-indigo-400"></i> PHP / Node.js
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Herramientas -->
+                        <div>
+                            <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Herramientas & Control de Versiones</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg flex items-center gap-1.5">
+                                    <i class="fa-brands fa-git-alt text-orange-600"></i> Git
+                                </span>
+                                <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg flex items-center gap-1.5">
+                                    <i class="fa-brands fa-github"></i> GitHub
+                                </span>
+                                <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg flex items-center gap-1.5">
+                                    <i class="fa-solid fa-network-wire text-purple-500"></i> REST APIs
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- HABILIDADES BLANDAS -->
+                <section class="page-break">
+                    <div class="flex items-center gap-2 mb-4 text-brand-600 dark:text-brand-400">
+                        <i class="fa-solid fa-user-gear text-xl"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-wider">Competencias</h2>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+                            <span>Resolución lógica de problemas</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+                            <span>Trabajo en equipo y metodologías ágiles</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+                            <span>Adaptabilidad y aprendizaje rápido</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-check text-emerald-500 text-xs"></i>
+                            <span>Atención al detalle y código limpio</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- IDIOMAS -->
+                <section class="page-break">
+                    <div class="flex items-center gap-2 mb-3 text-brand-600 dark:text-brand-400">
+                        <i class="fa-solid fa-language text-xl"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-wider">Idiomas</h2>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 dark:text-slate-300 font-medium">Español</span>
+                            <span class="text-xs text-slate-500">Nativo</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 dark:text-slate-300 font-medium">Inglés</span>
+                            <span class="text-xs text-slate-500">Técnico / Intermedio</span>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- COLUMNA DERECHA (Experiencia, Proyectos, Perfil) -->
+            <div class="space-y-8 md:col-span-2">
+                
+                <!-- PERFIL PROFESIONAL -->
+                <section class="page-break">
+                    <div class="flex items-center gap-2 mb-4 text-brand-600 dark:text-brand-400">
+                        <i class="fa-solid fa-briefcase text-xl"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-wider">Perfil Profesional</h2>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm md:text-base">
+                        Estudiante/Egresado de la carrera de <strong>Desarrollo de Sistemas de Información en el Instituto SISE</strong>. Poseo sólidas bases en lógica de programación, diseño y gestión de bases de datos relacionales, así como desarrollo web frontend y backend. Apasionado por la construcción de software modular, mantenible y centrado en la experiencia del usuario. Busco aportar mis conocimientos en proyectos desafiantes mientras continúo expandiendo mis competencias técnicas.
+                    </p>
+                </section>
+
+                <!-- PROYECTOS DESTACADOS -->
+                <section class="page-break">
+                    <div class="flex items-center gap-2 mb-6 text-brand-600 dark:text-brand-400">
+                        <i class="fa-solid fa-diagram-project text-xl"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-wider">Proyectos Destacados</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Proyecto 1 -->
+                        <div class="relative pl-6 border-l-2 border-brand-500 dark:border-brand-400 group">
+                            <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-brand-500 group-hover:scale-125 transition-transform"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Sistema Web de Gestión de Inventario</h3>
+                                <span class="text-xs text-slate-500 font-medium">Proyecto Académico / Freelance</span>
+                            </div>
+                            <p class="text-xs text-brand-600 dark:text-brand-400 mt-0.5">Tecnologías: PHP, MySQL, JavaScript, HTML5, CSS3</p>
+                            <ul class="mt-2 text-sm text-slate-600 dark:text-slate-300 space-y-1 list-disc list-inside">
+                                <li>Diseño e implementación de la base de datos relacional en MySQL optimizando consultas complejos.</li>
+                                <li>Desarrollo de un panel administrativo interactivo para control de stock, proveedores y reportes en tiempo real.</li>
+                                <li>Implementación de autenticación segura de usuarios y roles de acceso.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Proyecto 2 -->
+                        <div class="relative pl-6 border-l-2 border-brand-500 dark:border-brand-400 group">
+                            <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-brand-500 group-hover:scale-125 transition-transform"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Aplicación de Registro y Asistencia</h3>
+                                <span class="text-xs text-slate-500 font-medium">Proyecto de Instituto SISE</span>
+                            </div>
+                            <p class="text-xs text-brand-600 dark:text-brand-400 mt-0.5">Tecnologías: SQL Server, HTML, Tailwind CSS, JavaScript</p>
+                            <ul class="mt-2 text-sm text-slate-600 dark:text-slate-300 space-y-1 list-disc list-inside">
+                                <li>Modelado de datos en SQL Server e integración mediante procedimientos almacenados.</li>
+                                <li>Interfaz responsiva diseñada para uso intuitivo en dispositivos móviles y de escritorio.</li>
+                                <li>Control de versiones colaborativo administrado mediante Git y GitHub.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- EXPERIENCIA LABORAL / PRÁCTICAS -->
+                <section class="page-break">
+                    <div class="flex items-center gap-2 mb-6 text-brand-600 dark:text-brand-400">
+                        <i class="fa-solid fa-laptop-code text-xl"></i>
+                        <h2 class="text-lg font-bold uppercase tracking-wider">Experiencia Práctica</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Experiencia 1 -->
+                        <div class="bg-slate-50 dark:bg-slate-700/30 p-5 rounded-xl border border-slate-100 dark:border-slate-700">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <h3 class="font-bold text-slate-900 dark:text-white">Asistente de Soporte y Desarrollo Junior</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-full w-fit">2023 - Presente</span>
+                            </div>
+                            <p class="text-xs font-medium text-brand-600 dark:text-brand-400 mt-1">Empresa / Negocio Local</p>
+                            <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">
+                                Apoyo en el mantenimiento preventivo y correctivo de sistemas internos, actualización de scripts SQL y desarrollo de funcionalidades menores para aplicaciones web de la empresa.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CONTACTO Y DISPONIBILIDAD -->
+                <section class="page-break bg-gradient-to-br from-brand-50 to-slate-50 dark:from-slate-700/40 dark:to-slate-800 p-6 rounded-2xl border border-brand-100 dark:border-slate-700">
+                    <h3 class="font-bold text-slate-900 dark:text-white text-base mb-2">¿Interesado en mi perfil?</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                        Estoy disponible para oportunidades laborales a tiempo completo, medio tiempo o proyectos como Freelancer.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="mailto:juan.perez@email.com" class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Enviar Correo
+                        </a>
+                        <a href="https://wa.me/51987654321" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-colors flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            Contactar por WhatsApp
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- PIE DE PÁGINA -->
+        <footer class="bg-slate-100 dark:bg-slate-900/50 p-6 text-center text-xs text-slate-500 border-t border-slate-200 dark:border-slate-700 no-print">
+            <p>© <span id="year"></span> Juan Pérez - Hoja de Vida Profesional. Desarrollado con HTML, CSS (Tailwind) y JavaScript.</p>
+        </footer>
+    </main>
+
+    <!-- Script para Modo Oscuro y Utilidades -->
+    <script>
+        // Establecer el año actual en el footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Lógica de Modo Oscuro
+        const themeToggleBtn = document.getElementById('themeToggle');
+        
+        // Detectar preferencia guardada o del sistema
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Evento para alternar tema
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
